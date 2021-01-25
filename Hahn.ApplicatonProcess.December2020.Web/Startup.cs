@@ -1,17 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Hahn.ApplicatonProcess.December2020.Data;
+using Hahn.ApplicatonProcess.December2020.Domain;
+using Hahn.ApplicatonProcess.December2020.Domain.Repositories.EF;
+using Hahn.ApplicatonProcess.December2020.Domain.Repositories.Utilities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
 namespace Hahn.ApplicatonProcess.December2020.Web
@@ -29,7 +24,7 @@ namespace Hahn.ApplicatonProcess.December2020.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<HAPDDbContext>(opt => opt.UseInMemoryDatabase("HAPD_DB"));
-
+            services.AddScoped<IUnitOfWork>(config => new UnitOfWork(config.GetRequiredService<HAPDDbContext>()));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

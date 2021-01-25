@@ -1,4 +1,4 @@
-﻿namespace Hahn.ApplicatonProcess.December2020.Web.Model
+﻿namespace Hahn.ApplicatonProcess.December2020.Data.Models
 {
     public class ApplicantModel
     {

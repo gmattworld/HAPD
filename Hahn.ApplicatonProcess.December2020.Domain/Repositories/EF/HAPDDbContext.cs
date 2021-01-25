@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Hahn.ApplicatonProcess.December2020.Data;
+using Microsoft.EntityFrameworkCore;
 
-namespace Hahn.ApplicatonProcess.December2020.Data
+namespace Hahn.ApplicatonProcess.December2020.Domain.Repositories.EF
 {
     public class HAPDDbContext : DbContext
     {
